@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">BillCalc</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="electricmeter">Electric Meter</string>
+    <string name="enter_current_counter_value">Enter the current counter value</string>
+    <string name="save">Save</string>
+    <string name="gasmeter">Gas Meter</string>
+    <string name="watermeter">Water Meter</string>
+    <string name="settings">Settings</string>
+    <string name="enter_current_tariff">Enter current rate</string>
+    <string name="cancel">Cancel</string>
 </resources>
