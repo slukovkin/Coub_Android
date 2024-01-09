@@ -29,6 +29,7 @@ abstract class Db : RoomDatabase() {
     abstract fun settings(): SettingsDao
 
     companion object {
+
         fun getDb(context: Context): Db {
             return Room.databaseBuilder(
                 context,
