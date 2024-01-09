@@ -31,12 +31,14 @@
             android:textAlignment="center" />
 
         <EditText
+            android:id="@+id/edCurrentCounter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textSize="24sp"
             android:hint="@string/enter_current_counter_value"
             android:inputType="number"
+            android:textAlignment="center"
             android:autofillHints=""
             />
 
