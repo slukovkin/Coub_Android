@@ -5,11 +5,42 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import com.all4drive.billcalc.R
+import com.all4drive.billcalc.data.room.Db
+import com.all4drive.billcalc.data.room.entity.GasMeter
+import com.all4drive.billcalc.data.room.entity.Settings
 import com.all4drive.billcalc.databinding.FragmentGasMeterBinding
+import com.all4drive.billcalc.presentation.MainViewModel
+import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class GasMeterFragment : Fragment() {
 
+    private val viewModel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentGasMeterBinding
+    private lateinit var oldMeter: GasMeter
+    private lateinit var setting: Settings
+
+    private val DEFAULT_GAS_METER = GasMeter(
+        id = null,
+        prevCounter = 0,
+        currentCounter = 0,
+        currentFlow = 0.0,
+        payment = 0.0,
+        Calendar.getInstance().time.toString()
+    )
+
+    private val DEFAULT_SETTINGS = Settings(
+        id = null,
+        electricPrice = 0.0,
+        waterPrice = 0.0,
+        gasPrice = 0.0,
+        createdAt = Calendar.getInstance().time.toString()
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -17,6 +48,56 @@ class GasMeterFragment : Fragment() {
     ): View {
         binding = FragmentGasMeterBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val db = Db.getDb(requireContext())
+
+        db.gas().getLastMeter().asLiveData().observe(viewLifecycleOwner) {
+            oldMeter = it ?: DEFAULT_GAS_METER
+            binding.tvPrevCounter.text = oldMeter.currentCounter.toString()
+        }
+
+        db.settings().getLastSettings().asLiveData().observe(viewLifecycleOwner) {
+            setting = it ?: DEFAULT_SETTINGS
+        }
+
+        binding.btnCancel.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, MenuFragment.newInstance()).commit()
+        }
+
+        binding.btnSaveGasMeter.setOnClickListener {
+            val currentCounter = binding.edCurrentCounter.text.toString()
+            if(currentCounter.isEmpty() || currentCounter.toInt() < oldMeter.currentCounter) {
+                binding.edCurrentCounter.text.clear()
+                binding.edCurrentCounter.error =
+                    getString(R.string.the_current_readings_should_not_be_less_than_the_previous_ones)
+                return@setOnClickListener
+            }
+            val meter = GasMeter(
+                id = null,
+                prevCounter = oldMeter.currentCounter,
+                currentCounter = currentCounter.toInt(),
+                currentFlow = (currentCounter.toInt() - oldMeter.currentCounter).toDouble(),
+                payment = (currentCounter.toInt() - oldMeter.currentCounter).toDouble() * setting.gasPrice,
+                createdAt = Calendar.getInstance().time.toString()
+            )
+
+            binding.edCurrentCounter.text.clear()
+            viewModel.viewModelScope.launch {
+                db.gas().insertValueMeter(meter)
+            }
+            Toast.makeText(requireContext(), "Data saved successfully", Toast.LENGTH_LONG)
+                .show()
+
+            viewModel.gasMeter.value = meter
+
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, MenuFragment.newInstance()).commit()
+        }
     }
 
     companion object {
