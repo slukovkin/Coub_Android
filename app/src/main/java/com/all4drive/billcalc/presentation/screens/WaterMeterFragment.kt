@@ -101,7 +101,6 @@ class WaterMeterFragment : Fragment() {
         }
     }
     companion object {
-
         @JvmStatic
         fun newInstance() = WaterMeterFragment()
     }

@@ -49,7 +49,11 @@ class MenuFragment : Fragment() {
                 .replace(R.id.fragmentContainer, GasMeterFragment.newInstance()).commit()
         }
 
-        binding.btnReportScreen.setOnClickListener { }
+        binding.btnReportScreen.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.fragmentContainer, ReportFragment.newInstance()).commit()
+        }
 
         binding.btnSettingScreen.setOnClickListener {
             parentFragmentManager.beginTransaction()
@@ -69,7 +73,6 @@ class MenuFragment : Fragment() {
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance() = MenuFragment()
     }
