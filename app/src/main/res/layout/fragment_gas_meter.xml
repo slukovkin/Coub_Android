@@ -9,45 +9,51 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:background="@drawable/fon"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:paddingTop="24dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:autoSizeMaxTextSize="24sp"
             android:padding="8dp"
             android:text="@string/gasmeter"
             android:textAlignment="center"
-            android:textSize="24sp" />
+            android:textColor="@color/white" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textAlignment="center"
+            android:autoSizeMaxTextSize="24sp"
             android:text="@string/previous_counter"
-            android:textSize="20sp" />
+            android:textAlignment="center"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/tvPrevCounter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:autoSizeMaxTextSize="24sp"
             android:textAlignment="center"
-            android:textSize="24sp" />
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/edCurrentCounter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginTop="10dp"
+            android:autoSizeMaxTextSize="24sp"
             android:autofillHints=""
             android:hint="@string/enter_current_counter_value"
             android:inputType="number"
             android:textAlignment="center"
-            android:textSize="24sp" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white200" />
 
         <Button
             android:id="@+id/btnSaveGasMeter"
