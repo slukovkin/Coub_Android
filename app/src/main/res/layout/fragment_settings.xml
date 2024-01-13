@@ -22,6 +22,14 @@
             android:textAlignment="center"
             android:textSize="24sp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:text="Electric price"
+            android:textSize="20sp" />
+
         <EditText
             android:id="@+id/edElectricPrice"
             android:layout_width="match_parent"
@@ -33,6 +41,14 @@
             android:textAlignment="center"
             android:textSize="24sp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:text="Water price"
+            android:textSize="20sp" />
+
         <EditText
             android:id="@+id/edWaterPrice"
             android:layout_width="match_parent"
@@ -43,6 +59,14 @@
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:text="Gas price"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/edGasPrice"
