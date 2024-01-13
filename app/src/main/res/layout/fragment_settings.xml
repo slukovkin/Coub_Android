@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
-            android:text="Electric price"
+            android:text="@string/electric_price"
             android:textSize="20sp" />
 
         <EditText
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
-            android:text="Water price"
+            android:text="@string/water_price"
             android:textSize="20sp" />
 
         <EditText
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
-            android:text="Gas price"
+            android:text="@string/gas_price"
             android:textSize="20sp" />
 
         <EditText
@@ -103,7 +103,7 @@
             android:id="@+id/btnClearDb"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text="Очистить БД"
+            android:text="@string/clear_database"
             app:cornerRadius="5dp" />
 
 

@@ -14,39 +14,47 @@
         android:orientation="vertical"
         android:textAlignment="center">
 
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#FFFF0000"
+            android:layout_marginBottom="20dp" />
+
         <Button
             android:id="@+id/btnElectricScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Электроснабжение"
+            android:text="@string/electricity_supply"
             app:cornerRadius="5dp" />
 
         <Button
             android:id="@+id/btnWaterScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Водоснабжение"
+            android:text="@string/water_supply"
             app:cornerRadius="5dp" />
 
         <Button
             android:id="@+id/btnGasScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Газоснабжение"
+            android:text="@string/gas_supply"
             app:cornerRadius="5dp" />
 
         <Button
             android:id="@+id/btnReportScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Отчеты"
+            android:text="@string/reports"
             app:cornerRadius="5dp" />
 
         <Button
             android:id="@+id/btnSettingScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Настройки тарифов"
+            android:text="@string/rate_settings"
             app:cornerRadius="5dp" />
 
 

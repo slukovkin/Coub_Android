@@ -1,5 +1,6 @@
 package com.all4drive.billcalc.presentation.screens
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,9 +13,7 @@ import com.all4drive.billcalc.data.room.Db
 import com.all4drive.billcalc.databinding.FragmentReportBinding
 import com.all4drive.billcalc.presentation.MainViewModel
 import kotlinx.coroutines.launch
-import kotlin.math.floor
 import kotlin.math.roundToInt
-import kotlin.math.roundToLong
 
 class ReportFragment : Fragment() {
 
@@ -29,6 +28,7 @@ class ReportFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -37,8 +37,8 @@ class ReportFragment : Fragment() {
         viewModel.viewModelScope.launch {
             db.electric().getLastMeter().asLiveData().observe(viewLifecycleOwner) {
                 with(binding) {
-                    tvCurrentDate.text = (it.createdAt.slice(3..7)).toString() +
-                            (it.createdAt.slice(29..33)).toString()
+                    tvCurrentDate.text = (it.createdAt.slice(3..7)) +
+                            (it.createdAt.slice(29..33))
                     prevEl.text = it.prevCounter.toString()
                     currEl.text = it.currentCounter.toString()
                     consumpEl.text = it.currentFlow.toString()

@@ -11,4 +11,14 @@
     <string name="enter_current_tariff">Enter current rate</string>
     <string name="cancel">Cancel</string>
     <string name="the_current_readings_should_not_be_less_than_the_previous_ones">The current readings should not be less than the previous ones!</string>
+    <string name="electricity_supply">Electricity supply</string>
+    <string name="water_supply">Water supply</string>
+    <string name="gas_supply">Gas supply</string>
+    <string name="reports">Reports</string>
+    <string name="rate_settings">Rate settings</string>
+    <string name="previous_counter">Previous counter</string>
+    <string name="electric_price">Electric price</string>
+    <string name="water_price">Water price</string>
+    <string name="gas_price">Gas price</string>
+    <string name="clear_database">Clear database</string>
 </resources>
