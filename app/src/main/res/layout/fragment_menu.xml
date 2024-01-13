@@ -49,16 +49,6 @@
             android:text="Настройки тарифов"
             app:cornerRadius="5dp" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp"/>
-
-        <Button
-            android:id="@+id/btnClearDb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Очистить БД"
-            app:cornerRadius="5dp" />
 
     </LinearLayout>
 

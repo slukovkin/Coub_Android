@@ -44,6 +44,15 @@ class SettingsFragment : Fragment() {
 
         val db = Db.getDb(requireContext())
 
+        binding.btnClearDb.setOnClickListener {
+            viewModel.viewModelScope.launch {
+                db.gas().deleteAll()
+                db.water().deleteAll()
+                db.electric().deleteAll()
+                db.settings().deleteAll()
+            }
+        }
+
         db.settings().getLastSettings().asLiveData().observe(viewLifecycleOwner) {
             oldSettings = it ?: DEFAULT_SETTINGS
 

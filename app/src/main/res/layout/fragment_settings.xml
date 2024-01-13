@@ -71,7 +71,19 @@
             android:text="@string/cancel"
             app:cornerRadius="5dp" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="250dp"/>
+
+        <Button
+            android:id="@+id/btnClearDb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Очистить БД"
+            app:cornerRadius="5dp" />
+
 
     </LinearLayout>
+
 
 </FrameLayout>

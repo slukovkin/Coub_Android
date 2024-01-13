@@ -61,14 +61,6 @@ class MenuFragment : Fragment() {
                 .replace(R.id.fragmentContainer, SettingsFragment.newInstance()).commit()
         }
 
-        binding.btnClearDb.setOnClickListener {
-            viewModel.viewModelScope.launch {
-                db.gas().deleteAll()
-                db.water().deleteAll()
-                db.electric().deleteAll()
-                db.settings().deleteAll()
-            }
-        }
 
     }
 
