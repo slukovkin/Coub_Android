@@ -101,7 +101,6 @@ class GasMeterFragment : Fragment() {
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance() = GasMeterFragment()
     }
