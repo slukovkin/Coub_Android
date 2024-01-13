@@ -5,18 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.viewModelScope
 import com.all4drive.billcalc.R
-import com.all4drive.billcalc.data.room.Db
 import com.all4drive.billcalc.databinding.FragmentMenuBinding
-import com.all4drive.billcalc.presentation.MainViewModel
-import kotlinx.coroutines.launch
 
 class MenuFragment : Fragment() {
 
     private lateinit var binding: FragmentMenuBinding
-    private val viewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +22,6 @@ class MenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val db = Db.getDb(requireContext())
 
         binding.btnElectricScreen.setOnClickListener {
             parentFragmentManager.beginTransaction()
@@ -60,8 +52,6 @@ class MenuFragment : Fragment() {
                 .addToBackStack(null)
                 .replace(R.id.fragmentContainer, SettingsFragment.newInstance()).commit()
         }
-
-
     }
 
     companion object {
