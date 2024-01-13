@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">COUB</string>
+    <string name="electricmeter">Элетросчетчик</string>
+    <string name="enter_current_counter_value">Введите текущее значение счетчика</string>
+    <string name="save">Сохранить</string>
+    <string name="gasmeter">Газовый счетчик</string>
+    <string name="watermeter">Водомер</string>
+    <string name="settings">Настройки</string>
+    <string name="enter_current_tariff">Введите текущий тариф</string>
+    <string name="cancel">Отмена</string>
+    <string name="the_current_readings_should_not_be_less_than_the_previous_ones">Текущие показания не должны быть меньше предыдущих!</string>
+    <string name="electricity_supply">Электроснабжение</string>
+    <string name="water_supply">Водоснабжение</string>
+    <string name="gas_supply">Газоснабжение</string>
+    <string name="reports">Отчеты</string>
+    <string name="rate_settings">Настройка тарифов</string>
+    <string name="previous_counter">Предыдущий счетчик</string>
+    <string name="electric_price">Стоимость электричества за кВт</string>
+    <string name="water_price">Стоимость воды за куб</string>
+    <string name="gas_price">Стоимость газа за куб</string>
+    <string name="clear_database">Очистить базу данных</string>
+    <string name="report_for">Отчет за:</string>
+    <string name="title">Счетчик</string>
+    <string name="previous">Предыдущий</string>
+    <string name="current">Текущий</string>
+    <string name="consumption">Расход</string>
+    <string name="payment">Оплата</string>
+    <string name="electric">Электро</string>
+    <string name="water">Вода</string>
+    <string name="gas">Газ</string>
+</resources>

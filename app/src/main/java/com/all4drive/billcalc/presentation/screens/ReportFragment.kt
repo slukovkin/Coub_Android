@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.all4drive.billcalc.R
 import com.all4drive.billcalc.data.room.Db
 import com.all4drive.billcalc.databinding.FragmentReportBinding
 import com.all4drive.billcalc.presentation.MainViewModel
@@ -33,6 +34,11 @@ class ReportFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val db = Db.getDb(requireContext())
+
+        binding.btnCancel.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, MenuFragment.newInstance()).commit()
+        }
 
         viewModel.viewModelScope.launch {
             db.electric().getLastMeter().asLiveData().observe(viewLifecycleOwner) {

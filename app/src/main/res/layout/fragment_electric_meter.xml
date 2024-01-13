@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
-            android:text="Previous counter"
+            android:text="@string/previous_counter"
             android:textSize="20sp" />
 
         <TextView

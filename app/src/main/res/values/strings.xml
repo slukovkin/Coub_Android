@@ -1,7 +1,6 @@
 <resources>
-    <string name="app_name">BillCalc</string>
+    <string name="app_name">COUB</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="electricmeter">Electric Meter</string>
     <string name="enter_current_counter_value">Enter the current counter value</string>
     <string name="save">Save</string>
@@ -21,4 +20,13 @@
     <string name="water_price">Water price</string>
     <string name="gas_price">Gas price</string>
     <string name="clear_database">Clear database</string>
+    <string name="report_for">Report for:</string>
+    <string name="title">Meter</string>
+    <string name="previous">Previous</string>
+    <string name="current">Current</string>
+    <string name="consumption">Consumption</string>
+    <string name="payment">Payment</string>
+    <string name="electric">Electric</string>
+    <string name="water">Water</string>
+    <string name="gas">Gas</string>
 </resources>
