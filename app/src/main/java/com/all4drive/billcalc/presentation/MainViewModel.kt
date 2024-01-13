@@ -6,7 +6,6 @@ import com.all4drive.billcalc.data.room.entity.ElectricMeter
 import com.all4drive.billcalc.data.room.entity.GasMeter
 import com.all4drive.billcalc.data.room.entity.Settings
 import com.all4drive.billcalc.data.room.entity.WaterMeter
-import java.util.Calendar
 
 class MainViewModel: ViewModel() {
     val electricMeter: MutableLiveData<ElectricMeter> by lazy {

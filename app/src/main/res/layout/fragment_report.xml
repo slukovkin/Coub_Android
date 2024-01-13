@@ -14,6 +14,30 @@
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:padding="10dp"
+                android:text="Report for: "
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvCurrentDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:padding="5dp"
+                android:textSize="18sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/black"
             android:gravity="fill_horizontal">
@@ -94,7 +118,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/currEl"
@@ -104,7 +128,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/consumpEl"
@@ -114,7 +138,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/paymentEl"
@@ -124,7 +148,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </TableRow>
 
         <TableRow
@@ -150,7 +174,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/currWater"
@@ -160,7 +184,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/consumpWater"
@@ -170,7 +194,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/paymentWater"
@@ -180,7 +204,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </TableRow>
 
         <TableRow
@@ -206,7 +230,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/currGas"
@@ -216,7 +240,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/consumpGas"
@@ -226,7 +250,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/paymentGas"
@@ -236,7 +260,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </TableRow>
 
     </TableLayout>
