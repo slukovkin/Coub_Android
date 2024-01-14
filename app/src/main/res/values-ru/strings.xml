@@ -29,4 +29,5 @@
     <string name="electric">Электро</string>
     <string name="water">Вода</string>
     <string name="gas">Газ</string>
+    <string name="select_month">Выберите месяц:</string>
 </resources>

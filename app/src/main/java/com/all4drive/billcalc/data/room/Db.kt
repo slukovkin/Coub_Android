@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.all4drive.billcalc.data.dao.ElectricMeterDao
-import com.all4drive.billcalc.data.dao.GasMeterDao
-import com.all4drive.billcalc.data.dao.SettingsDao
-import com.all4drive.billcalc.data.dao.WaterMeterDao
+import com.all4drive.billcalc.data.room.dao.ElectricMeterDao
+import com.all4drive.billcalc.data.room.dao.GasMeterDao
+import com.all4drive.billcalc.data.room.dao.SettingsDao
+import com.all4drive.billcalc.data.room.dao.WaterMeterDao
 import com.all4drive.billcalc.data.room.entity.ElectricMeter
 import com.all4drive.billcalc.data.room.entity.GasMeter
 import com.all4drive.billcalc.data.room.entity.Settings

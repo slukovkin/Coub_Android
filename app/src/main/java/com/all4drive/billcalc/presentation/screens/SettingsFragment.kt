@@ -25,17 +25,6 @@ class SettingsFragment : Fragment() {
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var oldSettings: Settings
 
-
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private val DEFAULT_SETTINGS = Settings(
-        id = null,
-        electricPrice = 0.0,
-        waterPrice = 0.0,
-        gasPrice = 0.0,
-        createdAt = Calendar.getInstance().time.toInstant().toString()
-    )
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -81,8 +70,7 @@ class SettingsFragment : Fragment() {
                 Toast.makeText(requireContext(), "All fields required", Toast.LENGTH_LONG)
                     .show()
                 return@setOnClickListener
-            }
-            else {
+            } else {
                 val elPrice = binding.edElectricPrice.text.toString().toDouble()
                 val wtPrice = binding.edWaterPrice.text.toString().toDouble()
                 val gsPrice = binding.edGasPrice.text.toString().toDouble()
@@ -114,6 +102,17 @@ class SettingsFragment : Fragment() {
     }
 
     companion object {
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        @JvmStatic
+        val DEFAULT_SETTINGS = Settings(
+            id = null,
+            electricPrice = 0.0,
+            waterPrice = 0.0,
+            gasPrice = 0.0,
+            createdAt = Calendar.getInstance().time.toInstant().toString()
+        )
+
         @JvmStatic
         fun newInstance() = SettingsFragment()
     }

@@ -27,25 +27,6 @@ class GasMeterFragment : Fragment() {
     private lateinit var oldMeter: GasMeter
     private lateinit var setting: Settings
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private val DEFAULT_GAS_METER = GasMeter(
-        id = null,
-        prevCounter = 0,
-        currentCounter = 0,
-        currentFlow = 0.0,
-        payment = 0.0,
-        createdAt = Calendar.getInstance().time.toInstant().toString()
-    )
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private val DEFAULT_SETTINGS = Settings(
-        id = null,
-        electricPrice = 0.0,
-        waterPrice = 0.0,
-        gasPrice = 0.0,
-        createdAt = Calendar.getInstance().time.toInstant().toString()
-    )
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -76,7 +57,7 @@ class GasMeterFragment : Fragment() {
 
         binding.btnSaveGasMeter.setOnClickListener {
             val currentCounter = binding.edCurrentCounter.text.toString()
-            if(currentCounter.isEmpty() || currentCounter.toInt() < oldMeter.currentCounter) {
+            if (currentCounter.isEmpty() || currentCounter.toInt() < oldMeter.currentCounter) {
                 binding.edCurrentCounter.text.clear()
                 binding.edCurrentCounter.error =
                     getString(R.string.the_current_readings_should_not_be_less_than_the_previous_ones)
@@ -106,6 +87,28 @@ class GasMeterFragment : Fragment() {
     }
 
     companion object {
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        @JvmStatic
+        val DEFAULT_GAS_METER = GasMeter(
+            id = null,
+            prevCounter = 0,
+            currentCounter = 0,
+            currentFlow = 0.0,
+            payment = 0.0,
+            createdAt = Calendar.getInstance().time.toInstant().toString()
+        )
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        @JvmStatic
+        val DEFAULT_SETTINGS = Settings(
+            id = null,
+            electricPrice = 0.0,
+            waterPrice = 0.0,
+            gasPrice = 0.0,
+            createdAt = Calendar.getInstance().time.toInstant().toString()
+        )
+
         @JvmStatic
         fun newInstance() = GasMeterFragment()
     }

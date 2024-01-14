@@ -27,25 +27,6 @@ class WaterMeterFragment : Fragment() {
     private lateinit var oldMeter: WaterMeter
     private lateinit var setting: Settings
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private val DEFAULT_WATER_METER = WaterMeter(
-        id = null,
-        prevCounter = 0,
-        currentCounter = 0,
-        currentFlow = .0,
-        payment = .0,
-        createdAt = Calendar.getInstance().time.toInstant().toString()
-    )
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private val DEFAULT_SETTINGS = Settings(
-        id = null,
-        electricPrice = 0.0,
-        waterPrice = 0.0,
-        gasPrice = 0.0,
-        createdAt = Calendar.getInstance().time.toInstant().toString()
-    )
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -76,7 +57,7 @@ class WaterMeterFragment : Fragment() {
 
         binding.btnSaveWaterMeter.setOnClickListener {
             val currentCounter = binding.edCurrentCounter.text.toString()
-            if(currentCounter.isEmpty() || currentCounter.toInt() < oldMeter.currentCounter) {
+            if (currentCounter.isEmpty() || currentCounter.toInt() < oldMeter.currentCounter) {
                 binding.edCurrentCounter.text.clear()
                 binding.edCurrentCounter.error =
                     getString(R.string.the_current_readings_should_not_be_less_than_the_previous_ones)
@@ -105,7 +86,30 @@ class WaterMeterFragment : Fragment() {
                 .replace(R.id.fragmentContainer, MenuFragment.newInstance()).commit()
         }
     }
+
     companion object {
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        @JvmStatic
+        val DEFAULT_WATER_METER = WaterMeter(
+            id = null,
+            prevCounter = 0,
+            currentCounter = 0,
+            currentFlow = .0,
+            payment = .0,
+            createdAt = Calendar.getInstance().time.toInstant().toString()
+        )
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        @JvmStatic
+        val DEFAULT_SETTINGS = Settings(
+            id = null,
+            electricPrice = 0.0,
+            waterPrice = 0.0,
+            gasPrice = 0.0,
+            createdAt = Calendar.getInstance().time.toInstant().toString()
+        )
+
         @JvmStatic
         fun newInstance() = WaterMeterFragment()
     }
