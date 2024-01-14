@@ -28,24 +28,6 @@ class ElectricMeterFragment : Fragment() {
     private lateinit var oldMeter: ElectricMeter
     private lateinit var setting: Settings
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private val DEFAULT_ELECTRIC_METER = ElectricMeter(
-        id = null,
-        prevCounter = 0,
-        currentCounter = 0,
-        currentFlow = 0.0,
-        payment = 0.0,
-        createdAt = Calendar.getInstance().time.toInstant().toString()
-    )
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private val DEFAULT_SETTINGS = Settings(
-        id = null,
-        electricPrice = 0.0,
-        waterPrice = 0.0,
-        gasPrice = 0.0,
-        createdAt = Calendar.getInstance().time.toInstant().toString()
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -107,6 +89,27 @@ class ElectricMeterFragment : Fragment() {
     }
 
     companion object {
+        @RequiresApi(Build.VERSION_CODES.O)
+        @JvmStatic
+        val DEFAULT_ELECTRIC_METER = ElectricMeter(
+            id = null,
+            prevCounter = 0,
+            currentCounter = 0,
+            currentFlow = 0.0,
+            payment = 0.0,
+            createdAt = Calendar.getInstance().time.toInstant().toString()
+        )
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        @JvmStatic
+        val DEFAULT_SETTINGS = Settings(
+            id = null,
+            electricPrice = 0.0,
+            waterPrice = 0.0,
+            gasPrice = 0.0,
+            createdAt = Calendar.getInstance().time.toInstant().toString()
+        )
+
         @JvmStatic
         fun newInstance() = ElectricMeterFragment()
     }

@@ -1,4 +1,4 @@
-package com.all4drive.billcalc.data.dao
+package com.all4drive.billcalc.data.room.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

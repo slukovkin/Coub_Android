@@ -29,4 +29,5 @@
     <string name="electric">Electric</string>
     <string name="water">Water</string>
     <string name="gas">Gas</string>
+    <string name="select_month">Select month:</string>
 </resources>
