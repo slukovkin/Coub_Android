@@ -43,8 +43,7 @@ class ReportFragment : Fragment() {
         viewModel.viewModelScope.launch {
             db.electric().getLastMeter().asLiveData().observe(viewLifecycleOwner) {
                 with(binding) {
-                    tvCurrentDate.text = (it.createdAt.slice(3..7)) +
-                            (it.createdAt.slice(29..33))
+                    tvCurrentDate.text = (it.createdAt.slice(0..6))
                     prevEl.text = it.prevCounter.toString()
                     currEl.text = it.currentCounter.toString()
                     consumpEl.text = it.currentFlow.toString()

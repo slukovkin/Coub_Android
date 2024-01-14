@@ -1,11 +1,13 @@
 package com.all4drive.billcalc.presentation.screens
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -26,21 +28,23 @@ class ElectricMeterFragment : Fragment() {
     private lateinit var oldMeter: ElectricMeter
     private lateinit var setting: Settings
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private val DEFAULT_ELECTRIC_METER = ElectricMeter(
         id = null,
-        0,
-        0,
-        0.0,
-        0.0,
-        Calendar.getInstance().time.toString()
+        prevCounter = 0,
+        currentCounter = 0,
+        currentFlow = 0.0,
+        payment = 0.0,
+        createdAt = Calendar.getInstance().time.toInstant().toString()
     )
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private val DEFAULT_SETTINGS = Settings(
         id = null,
         electricPrice = 0.0,
         waterPrice = 0.0,
         gasPrice = 0.0,
-        createdAt = Calendar.getInstance().time.toString()
+        createdAt = Calendar.getInstance().time.toInstant().toString()
     )
 
     override fun onCreateView(
@@ -50,6 +54,7 @@ class ElectricMeterFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -83,7 +88,7 @@ class ElectricMeterFragment : Fragment() {
                 currentCounter = currentCounter.toInt(),
                 currentFlow = (currentCounter.toInt() - oldMeter.currentCounter).toDouble(),
                 payment = (currentCounter.toInt() - oldMeter.currentCounter).toDouble() * setting.electricPrice,
-                createdAt = Calendar.getInstance().time.toString()
+                createdAt = Calendar.getInstance().time.toInstant().toString()
             )
 
             binding.edCurrentCounter.text.clear()
