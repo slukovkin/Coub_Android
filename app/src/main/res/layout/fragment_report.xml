@@ -23,7 +23,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="end"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:text="@string/select_month"
                     android:textColor="@color/white"
@@ -31,10 +31,11 @@
 
                 <Spinner
                     android:id="@+id/tvMonth"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_weight="1"
-                    android:gravity="start"
+                    android:textAlignment="center"
+                    android:background="@color/white"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

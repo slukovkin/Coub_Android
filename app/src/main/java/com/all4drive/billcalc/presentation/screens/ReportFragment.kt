@@ -1,6 +1,7 @@
 package com.all4drive.billcalc.presentation.screens
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -83,9 +85,10 @@ class ReportFragment : Fragment() {
                 queryReport(monthNumber)
             }
 
-            @SuppressLint("NewApi")
+
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                val currentMonth = Calendar.getInstance().time.toInstant().toString().slice(0..6)
+                val currentMonth = Calendar.getInstance().toInstant().toString().slice(0..6)
                 queryReport("%$currentMonth%")
             }
         }
