@@ -30,4 +30,7 @@
     <string name="water">Вода</string>
     <string name="gas">Газ</string>
     <string name="select_month">Выберите месяц:</string>
+    <string name="date">Дата: %1$s</string>
+    <string name="data_not_found">Данные не найдены</string>
+    <string name="enter_date">Выберите дату</string>
 </resources>

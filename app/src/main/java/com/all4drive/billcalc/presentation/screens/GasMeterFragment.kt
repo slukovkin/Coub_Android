@@ -41,8 +41,16 @@ class GasMeterFragment : Fragment() {
 
         val db = Db.getDb(requireContext())
 
+        binding.edCurrentCounter.setOnClickListener {
+            // showDataDialog()
+            binding.edCurrentCounter.isFocusableInTouchMode = true
+        }
+
         db.gas().getLastMeter().asLiveData().observe(viewLifecycleOwner) {
             oldMeter = it ?: DEFAULT_GAS_METER
+
+            val date = oldMeter.createdAt
+            binding.datePrevCounter.text = getString(R.string.date, date.slice(0..9))
             binding.tvPrevCounter.text = oldMeter.currentCounter.toString()
         }
 

@@ -30,4 +30,8 @@
     <string name="water">Water</string>
     <string name="gas">Gas</string>
     <string name="select_month">Select month:</string>
+    <string name="date">"Date: %1$s : "</string>
+    <string name="data_not_found">Data not found</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="enter_date">Enter date</string>
 </resources>

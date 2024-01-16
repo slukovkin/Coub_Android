@@ -1,5 +1,7 @@
 package com.all4drive.billcalc.presentation.screens
 
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -36,14 +38,22 @@ class ElectricMeterFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val db = Db.getDb(requireContext())
 
+        binding.edCurrentCounter.setOnClickListener {
+            showDataDialog()
+            binding.edCurrentCounter.isFocusableInTouchMode = true
+        }
+
         db.electric().getLastMeter().asLiveData().observe(viewLifecycleOwner) {
             oldMeter = it ?: DEFAULT_ELECTRIC_METER
+            val date = oldMeter.createdAt
+            binding.datePrevCounter.text = getString(R.string.date, date.slice(0..9))
             binding.tvPrevCounter.text = oldMeter.currentCounter.toString()
         }
 
@@ -86,6 +96,12 @@ class ElectricMeterFragment : Fragment() {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, MenuFragment.newInstance()).commit()
         }
+    }
+
+    private fun showDataDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.date_dialog)
+        dialog.show()
     }
 
     companion object {

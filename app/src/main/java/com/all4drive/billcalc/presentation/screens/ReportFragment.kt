@@ -87,7 +87,6 @@ class ReportFragment : Fragment() {
                 queryReport(monthNumber)
             }
 
-
             @RequiresApi(Build.VERSION_CODES.O)
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 val currentMonth = Calendar.getInstance().toInstant().toString().slice(0..6)
@@ -111,6 +110,8 @@ class ReportFragment : Fragment() {
                             consumpEl.text = it.currentFlow.toString()
                             paymentEl.text = ((it.payment * 100).roundToInt() / 100.0).toString()
                         }
+                    } else {
+                        gotoOnEmptyNotFoundScreen()
                     }
                 }
             db.water().getMeterByMonthId(month).asLiveData()
@@ -122,6 +123,8 @@ class ReportFragment : Fragment() {
                             consumpWater.text = it.currentFlow.toString()
                             paymentWater.text = ((it.payment * 100).roundToInt() / 100.0).toString()
                         }
+                    } else {
+                        gotoOnEmptyNotFoundScreen()
                     }
                 }
             db.gas().getMeterByMonthId(month).asLiveData()
@@ -133,9 +136,16 @@ class ReportFragment : Fragment() {
                             consumpGas.text = it.currentFlow.toString()
                             paymentGas.text = ((it.payment * 100).roundToInt() / 100.0).toString()
                         }
+                    } else {
+                        gotoOnEmptyNotFoundScreen()
                     }
                 }
         }
+    }
+
+    fun gotoOnEmptyNotFoundScreen() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, EmptyNotFound.newInstance()).commit()
     }
 
     class Month(

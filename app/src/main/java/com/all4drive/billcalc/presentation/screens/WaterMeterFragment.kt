@@ -41,8 +41,16 @@ class WaterMeterFragment : Fragment() {
 
         val db = Db.getDb(requireContext())
 
+        binding.edCurrentCounter.setOnClickListener {
+            // showDataDialog()
+            binding.edCurrentCounter.isFocusableInTouchMode = true
+        }
+
         db.water().getLastMeter().asLiveData().observe(viewLifecycleOwner) {
             oldMeter = it ?: DEFAULT_WATER_METER
+
+            val date = oldMeter.createdAt
+            binding.datePrevCounter.text = getString(R.string.date, date.slice(0..9))
             binding.tvPrevCounter.text = oldMeter.currentCounter.toString()
         }
 
