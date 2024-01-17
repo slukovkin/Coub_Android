@@ -34,4 +34,6 @@
     <string name="data_not_found">Data not found</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="enter_date">Enter date</string>
+    <string name="selected_date" translatable="false">%1$d-%2$d-%3$d</string>
+    <string name="current_date" translatable="false">%1$d-%2$d-%3$d</string>
 </resources>

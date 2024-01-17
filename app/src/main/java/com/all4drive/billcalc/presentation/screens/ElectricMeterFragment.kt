@@ -1,7 +1,7 @@
 package com.all4drive.billcalc.presentation.screens
 
 import android.annotation.SuppressLint
-import android.app.Dialog
+import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -29,6 +29,7 @@ class ElectricMeterFragment : Fragment() {
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var oldMeter: ElectricMeter
     private lateinit var setting: Settings
+    private lateinit var selectedDate: String
 
 
     override fun onCreateView(
@@ -46,14 +47,29 @@ class ElectricMeterFragment : Fragment() {
         val db = Db.getDb(requireContext())
 
         binding.edCurrentCounter.setOnClickListener {
-            showDataDialog()
+            val calendar = Calendar.getInstance()
             binding.edCurrentCounter.isFocusableInTouchMode = true
+
+            DatePickerDialog(
+                requireContext(),
+                { _, year, month, dayOfMonth ->
+                    selectedDate =
+                        getString(R.string.selected_date, year, month + 1, dayOfMonth)
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
         }
 
         db.electric().getLastMeter().asLiveData().observe(viewLifecycleOwner) {
             oldMeter = it ?: DEFAULT_ELECTRIC_METER
             val date = oldMeter.createdAt
-            binding.datePrevCounter.text = getString(R.string.date, date.slice(0..9))
+            binding.datePrevCounter.text = if (date.isNotEmpty()) {
+                getString(R.string.date, date.slice(0..5))
+            } else {
+                ""
+            }
             binding.tvPrevCounter.text = oldMeter.currentCounter.toString()
         }
 
@@ -80,7 +96,7 @@ class ElectricMeterFragment : Fragment() {
                 currentCounter = currentCounter.toInt(),
                 currentFlow = (currentCounter.toInt() - oldMeter.currentCounter).toDouble(),
                 payment = (currentCounter.toInt() - oldMeter.currentCounter).toDouble() * setting.electricPrice,
-                createdAt = Calendar.getInstance().time.toInstant().toString()
+                createdAt = selectedDate
             )
 
             binding.edCurrentCounter.text.clear()
@@ -98,12 +114,6 @@ class ElectricMeterFragment : Fragment() {
         }
     }
 
-    private fun showDataDialog() {
-        val dialog = Dialog(requireContext())
-        dialog.setContentView(R.layout.date_dialog)
-        dialog.show()
-    }
-
     companion object {
         @RequiresApi(Build.VERSION_CODES.O)
         @JvmStatic
@@ -113,7 +123,7 @@ class ElectricMeterFragment : Fragment() {
             currentCounter = 0,
             currentFlow = 0.0,
             payment = 0.0,
-            createdAt = Calendar.getInstance().time.toInstant().toString()
+            createdAt = ""
         )
 
         @RequiresApi(Build.VERSION_CODES.O)
@@ -123,7 +133,7 @@ class ElectricMeterFragment : Fragment() {
             electricPrice = 0.0,
             waterPrice = 0.0,
             gasPrice = 0.0,
-            createdAt = Calendar.getInstance().time.toInstant().toString()
+            createdAt = ""
         )
 
         @JvmStatic
