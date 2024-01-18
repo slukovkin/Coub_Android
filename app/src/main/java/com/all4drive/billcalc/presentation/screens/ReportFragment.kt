@@ -50,15 +50,15 @@ class ReportFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setupListWithArrayAdapter() {
         val data = mutableListOf(
-            Month("01", "January 2024"),
-            Month("02", "February 2024"),
-            Month("03", "March 2024"),
-            Month("04", "April 2024"),
-            Month("05", "May 2024"),
-            Month("06", "June 2024"),
-            Month("07", "Juli 2024"),
-            Month("08", "August 2024"),
-            Month("09", "September 2024"),
+            Month("1", "January 2024"),
+            Month("2", "February 2024"),
+            Month("3", "March 2024"),
+            Month("4", "April 2024"),
+            Month("5", "May 2024"),
+            Month("6", "June 2024"),
+            Month("7", "Juli 2024"),
+            Month("8", "August 2024"),
+            Month("9", "September 2024"),
             Month("10", "October 2024"),
             Month("11", "November 2024"),
             Month("12", "December 2024"),
@@ -72,6 +72,8 @@ class ReportFragment : Fragment() {
         )
 
         binding.tvMonth.adapter = adapter
+        val calendar = Calendar.getInstance()
+        val currentMonth = calendar.get(Calendar.MONTH) + 1
 
         binding.tvMonth.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -82,16 +84,21 @@ class ReportFragment : Fragment() {
             ) {
                 val item = data[position]
                 binding.tvCurrentDate.text = item.month
-                val monthNumber = "%2024-${item.id}%"
+                val month = if (currentMonth.toString() == item.id) {
+                    item.id
+                } else {
+                    item.id
+                }
+                val monthNumber = "%2024-${month}%"
 
                 queryReport(monthNumber)
             }
 
-
             @RequiresApi(Build.VERSION_CODES.O)
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                val currentMonth = Calendar.getInstance().toInstant().toString().slice(0..6)
-                queryReport("%$currentMonth%")
+//                val currentMonth = Calendar.getInstance().toInstant().toString().slice(0..5)
+//                queryReport("%$currentMonth%")
+                // TODO Если месяц отчета не выбран
             }
         }
 
@@ -105,12 +112,14 @@ class ReportFragment : Fragment() {
                 .observe(viewLifecycleOwner) {
                     if (it != null) {
                         with(binding) {
-                            tvCurrentDate.text = (it.createdAt.slice(0..6))
+                            tvCurrentDate.text = (it.createdAt.slice(0..5))
                             prevEl.text = it.prevCounter.toString()
                             currEl.text = it.currentCounter.toString()
                             consumpEl.text = it.currentFlow.toString()
                             paymentEl.text = ((it.payment * 100).roundToInt() / 100.0).toString()
                         }
+                    } else {
+                        gotoOnEmptyNotFoundScreen()
                     }
                 }
             db.water().getMeterByMonthId(month).asLiveData()
@@ -122,6 +131,8 @@ class ReportFragment : Fragment() {
                             consumpWater.text = it.currentFlow.toString()
                             paymentWater.text = ((it.payment * 100).roundToInt() / 100.0).toString()
                         }
+                    } else {
+                        gotoOnEmptyNotFoundScreen()
                     }
                 }
             db.gas().getMeterByMonthId(month).asLiveData()
@@ -133,9 +144,16 @@ class ReportFragment : Fragment() {
                             consumpGas.text = it.currentFlow.toString()
                             paymentGas.text = ((it.payment * 100).roundToInt() / 100.0).toString()
                         }
+                    } else {
+                        gotoOnEmptyNotFoundScreen()
                     }
                 }
         }
+    }
+
+    private fun gotoOnEmptyNotFoundScreen() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, EmptyNotFound.newInstance()).commit()
     }
 
     class Month(

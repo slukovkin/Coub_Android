@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:autoSizeMaxTextSize="24sp"
+            android:textSize="24sp"
             android:padding="8dp"
             android:text="@string/watermeter"
             android:textAlignment="center"
@@ -28,32 +28,44 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:autoSizeMaxTextSize="24sp"
+            android:textSize="20sp"
             android:text="@string/previous_counter"
             android:textAlignment="center"
             android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/datePrevCounter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvPrevCounter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:autoSizeMaxTextSize="24sp"
+            android:gravity="center"
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/edCurrentCounter"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="10dp"
-            android:autoSizeMaxTextSize="24sp"
             android:autofillHints=""
+            android:focusable="false"
             android:hint="@string/enter_current_counter_value"
             android:inputType="number"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textColorHint="@color/white200" />
+            android:textColorHint="@color/white200"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btnSaveWaterMeter"

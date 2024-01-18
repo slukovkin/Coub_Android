@@ -1,5 +1,6 @@
 package com.all4drive.billcalc.presentation.screens
 
+import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -26,6 +27,7 @@ class WaterMeterFragment : Fragment() {
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var oldMeter: WaterMeter
     private lateinit var setting: Settings
+    private lateinit var selectedDate: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,8 +43,33 @@ class WaterMeterFragment : Fragment() {
 
         val db = Db.getDb(requireContext())
 
+        binding.edCurrentCounter.setOnClickListener {
+            binding.edCurrentCounter.setOnClickListener {
+                val calendar = Calendar.getInstance()
+                binding.edCurrentCounter.isFocusableInTouchMode = true
+
+                DatePickerDialog(
+                    requireContext(),
+                    { _, year, month, dayOfMonth ->
+                        selectedDate =
+                            getString(R.string.selected_date, year, month + 1, dayOfMonth)
+                    },
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH)
+                ).show()
+            }
+        }
+
         db.water().getLastMeter().asLiveData().observe(viewLifecycleOwner) {
             oldMeter = it ?: DEFAULT_WATER_METER
+
+            val date = oldMeter.createdAt
+            binding.datePrevCounter.text = if (date.isNotEmpty()) {
+                getString(R.string.date, date.slice(0..5))
+            } else {
+                ""
+            }
             binding.tvPrevCounter.text = oldMeter.currentCounter.toString()
         }
 
@@ -69,7 +96,7 @@ class WaterMeterFragment : Fragment() {
                 currentCounter = currentCounter.toInt(),
                 currentFlow = (currentCounter.toInt() - oldMeter.currentCounter).toDouble(),
                 payment = (currentCounter.toInt() - oldMeter.currentCounter).toDouble() * setting.waterPrice,
-                createdAt = Calendar.getInstance().time.toInstant().toString()
+                createdAt = selectedDate
             )
 
             binding.edCurrentCounter.text.clear()
@@ -97,7 +124,7 @@ class WaterMeterFragment : Fragment() {
             currentCounter = 0,
             currentFlow = .0,
             payment = .0,
-            createdAt = Calendar.getInstance().time.toInstant().toString()
+            createdAt = ""
         )
 
         @RequiresApi(Build.VERSION_CODES.O)
@@ -107,7 +134,7 @@ class WaterMeterFragment : Fragment() {
             electricPrice = 0.0,
             waterPrice = 0.0,
             gasPrice = 0.0,
-            createdAt = Calendar.getInstance().time.toInstant().toString()
+            createdAt = ""
         )
 
         @JvmStatic

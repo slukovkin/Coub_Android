@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">COUB</string>
+    <string name="electricmeter">Електролічильник</string>
+    <string name="enter_current_counter_value">"Введіть поточне значення лічильника "</string>
+    <string name="save">Зберегти</string>
+    <string name="gasmeter">"Газовий лічильник "</string>
+    <string name="watermeter">Водомір</string>
+    <string name="settings">Налаштування</string>
+    <string name="enter_current_tariff">"Введіть поточний тариф "</string>
+    <string name="cancel">Відміна</string>
+    <string name="the_current_readings_should_not_be_less_than_the_previous_ones">Поточні показання не повинні бути меншими за попередні!</string>
+    <string name="electricity_supply">Електропостачання</string>
+    <string name="water_supply">Водопостачання</string>
+    <string name="gas_supply">Газопостачання</string>
+    <string name="reports">Звіти</string>
+    <string name="rate_settings">Налаштування тарифів</string>
+    <string name="previous_counter">Попередній лічильник</string>
+    <string name="electric_price">Вартість електрики за кВт</string>
+    <string name="water_price">Вартість води за куб</string>
+    <string name="gas_price">Вартість газу за куб</string>
+    <string name="clear_database">Очистити базу даних</string>
+    <string name="report_for">Звіт за:</string>
+    <string name="title">Лічильник</string>
+    <string name="previous">Попередній</string>
+    <string name="current">Поточний</string>
+    <string name="consumption">Витрата</string>
+    <string name="payment">Оплата</string>
+    <string name="electric">Електро</string>
+    <string name="water">Вода</string>
+    <string name="gas">Газ</string>
+    <string name="select_month">Виберіть місяць:</string>
+    <string name="date">Дата: %1$s</string>
+    <string name="data_not_found">Дані не знайдені</string>
+    <string name="enter_date">Виберіть дату</string>
+</resources>

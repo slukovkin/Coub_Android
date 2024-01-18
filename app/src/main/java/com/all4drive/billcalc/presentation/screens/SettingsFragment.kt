@@ -75,12 +75,21 @@ class SettingsFragment : Fragment() {
                 val wtPrice = binding.edWaterPrice.text.toString().toDouble()
                 val gsPrice = binding.edGasPrice.text.toString().toDouble()
 
+                val calendar = Calendar.getInstance()
+                val currentDate =
+                    getString(
+                        R.string.current_date,
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH) + 1,
+                        calendar.get(Calendar.DAY_OF_MONTH)
+                    )
+
                 val setting = Settings(
                     id = null,
                     electricPrice = elPrice,
                     waterPrice = wtPrice,
                     gasPrice = gsPrice,
-                    createdAt = Calendar.getInstance().time.toInstant().toString()
+                    createdAt = currentDate
                 )
                 viewModel.viewModelScope.launch {
                     db.settings().insertValueSettings(setting)
