@@ -76,11 +76,17 @@ class SettingsFragment : Fragment() {
                 val gsPrice = binding.edGasPrice.text.toString().toDouble()
 
                 val calendar = Calendar.getInstance()
+                val month = calendar.get(Calendar.MONTH) + 1
+                val convertMonth = if (month < 10) {
+                    "0${month}"
+                } else {
+                    month.toString()
+                }
                 val currentDate =
                     getString(
                         R.string.current_date,
                         calendar.get(Calendar.YEAR),
-                        calendar.get(Calendar.MONTH) + 1,
+                        convertMonth,
                         calendar.get(Calendar.DAY_OF_MONTH)
                     )
 
@@ -119,7 +125,7 @@ class SettingsFragment : Fragment() {
             electricPrice = 0.0,
             waterPrice = 0.0,
             gasPrice = 0.0,
-            createdAt = Calendar.getInstance().time.toInstant().toString()
+            createdAt = ""
         )
 
         @JvmStatic

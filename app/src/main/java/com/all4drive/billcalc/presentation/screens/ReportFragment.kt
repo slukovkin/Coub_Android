@@ -25,6 +25,7 @@ class ReportFragment : Fragment() {
     private lateinit var adapter: ArrayAdapter<Month>
     private lateinit var binding: FragmentReportBinding
     private val viewModel: MainViewModel by activityViewModels()
+    private val db by lazy { Db.getDb(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,18 +51,18 @@ class ReportFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setupListWithArrayAdapter() {
         val data = mutableListOf(
-            Month("1", "January 2024"),
-            Month("2", "February 2024"),
-            Month("3", "March 2024"),
-            Month("4", "April 2024"),
-            Month("5", "May 2024"),
-            Month("6", "June 2024"),
-            Month("7", "Juli 2024"),
-            Month("8", "August 2024"),
-            Month("9", "September 2024"),
-            Month("10", "October 2024"),
-            Month("11", "November 2024"),
-            Month("12", "December 2024"),
+            Month("01", getString(R.string.january)),
+            Month("02", getString(R.string.february)),
+            Month("03", getString(R.string.march)),
+            Month("04", getString(R.string.april)),
+            Month("05", getString(R.string.may)),
+            Month("06", getString(R.string.june)),
+            Month("07", getString(R.string.juli)),
+            Month("08", getString(R.string.august)),
+            Month("09", getString(R.string.september)),
+            Month("10", getString(R.string.october)),
+            Month("11", getString(R.string.november)),
+            Month("12", getString(R.string.december)),
         )
 
         adapter = ArrayAdapter(
@@ -74,6 +75,11 @@ class ReportFragment : Fragment() {
         binding.tvMonth.adapter = adapter
         val calendar = Calendar.getInstance()
         val currentMonth = calendar.get(Calendar.MONTH) + 1
+        val convertMonth = if (currentMonth < 10) {
+            "0$currentMonth"
+        } else {
+            currentMonth.toString()
+        }
 
         binding.tvMonth.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -84,14 +90,14 @@ class ReportFragment : Fragment() {
             ) {
                 val item = data[position]
                 binding.tvCurrentDate.text = item.month
-                val month = if (currentMonth.toString() == item.id) {
+                val month = if (convertMonth == item.id) {
                     item.id
                 } else {
                     item.id
                 }
-                val monthNumber = "%2024-${month}%"
+                val monthNumber = "%20%-${month}%"
 
-                queryReport(monthNumber)
+                queryReport(db = db, month = monthNumber)
             }
 
             @RequiresApi(Build.VERSION_CODES.O)
@@ -104,15 +110,14 @@ class ReportFragment : Fragment() {
 
     }
 
-    private fun queryReport(month: String) {
-        val db = Db.getDb(requireContext())
+    private fun queryReport(db: Db, month: String) {
 
         viewModel.viewModelScope.launch {
             db.electric().getMeterByMonthId(month).asLiveData()
                 .observe(viewLifecycleOwner) {
                     if (it != null) {
                         with(binding) {
-                            tvCurrentDate.text = (it.createdAt.slice(0..5))
+                            tvCurrentDate.text = (it.createdAt.slice(0..6))
                             prevEl.text = it.prevCounter.toString()
                             currEl.text = it.currentCounter.toString()
                             consumpEl.text = it.currentFlow.toString()

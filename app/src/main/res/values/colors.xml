@@ -3,5 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="black200">#50FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="white200">#50FFFFFF</color>
+    <color name="white200">#90FFFFFF</color>
+    <color name="red">#FFFF0000</color>
+    <color name="dark_red">#FF800000</color>
 </resources>

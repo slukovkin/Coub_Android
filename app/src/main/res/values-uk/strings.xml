@@ -33,4 +33,17 @@
     <string name="date">Дата: %1$s</string>
     <string name="data_not_found">Дані не знайдені</string>
     <string name="enter_date">Виберіть дату</string>
+    <string name="enter_counter_value">Введіть показ лічильника</string>
+    <string name="january">Січень</string>
+    <string name="february">Лютий</string>
+    <string name="march">Березень</string>
+    <string name="april">Квітень</string>
+    <string name="may">Травень</string>
+    <string name="june">Червень</string>
+    <string name="juli">Липень</string>
+    <string name="august">Серпень</string>
+    <string name="september">Вересень</string>
+    <string name="october">Жовтень</string>
+    <string name="november">Листопад</string>
+    <string name="december">"Грудень "</string>
 </resources>

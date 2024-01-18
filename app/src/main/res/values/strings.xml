@@ -34,6 +34,19 @@
     <string name="data_not_found">Data not found</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="enter_date">Enter date</string>
-    <string name="selected_date" translatable="false">%1$d-%2$d-%3$d</string>
-    <string name="current_date" translatable="false">%1$d-%2$d-%3$d</string>
+    <string name="selected_date" translatable="false">%1$d-%2$s-%3$d</string>
+    <string name="current_date" translatable="false">%1$d-%2$s-%3$d</string>
+    <string name="enter_counter_value">Enter counter value</string>
+    <string name="january">January</string>
+    <string name="february">February</string>
+    <string name="march">March</string>
+    <string name="april">April</string>
+    <string name="may">May</string>
+    <string name="june">June</string>
+    <string name="juli">Juli</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">October</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
 </resources>

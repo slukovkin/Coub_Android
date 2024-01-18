@@ -1,9 +1,9 @@
 package com.all4drive.billcalc.domain.models
 
-class Setting(
-    val id: Int,
+data class Setting(
     val electricPrice: Double,
     val waterPrice: Double,
     val gasPrice: Double,
-    val createdAt: String
+    val createdAt: String,
+    val id: Int? = null
 )

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class GasMeter(
     @PrimaryKey(autoGenerate = true) val id: Int? = null,
     @ColumnInfo(name = "prev_counter") val prevCounter: Int,
-    @ColumnInfo(name = "curr_counter") val currentCounter: Int,
+    @ColumnInfo(name = "curr_counter") var currentCounter: Int,
     @ColumnInfo(name = "curr_flow") val currentFlow: Double,
     @ColumnInfo(name = "payment") val payment: Double,
     @ColumnInfo(name = "created_at") val createdAt: String

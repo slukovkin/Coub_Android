@@ -1,6 +1,7 @@
 package com.all4drive.billcalc.presentation.screens
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
@@ -8,6 +9,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
@@ -31,7 +34,6 @@ class ElectricMeterFragment : Fragment() {
     private lateinit var setting: Settings
     private lateinit var selectedDate: String
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -53,8 +55,13 @@ class ElectricMeterFragment : Fragment() {
             DatePickerDialog(
                 requireContext(),
                 { _, year, month, dayOfMonth ->
+                    val convertMonth = if (month < 10) {
+                        "0${month + 1}"
+                    } else {
+                        (month + 1).toString()
+                    }
                     selectedDate =
-                        getString(R.string.selected_date, year, month + 1, dayOfMonth)
+                        getString(R.string.selected_date, year, convertMonth, dayOfMonth)
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
@@ -66,15 +73,24 @@ class ElectricMeterFragment : Fragment() {
             oldMeter = it ?: DEFAULT_ELECTRIC_METER
             val date = oldMeter.createdAt
             binding.datePrevCounter.text = if (date.isNotEmpty()) {
-                getString(R.string.date, date.slice(0..5))
+                getString(R.string.date, date.slice(0..6))
             } else {
                 ""
             }
-            binding.tvPrevCounter.text = oldMeter.currentCounter.toString()
+            if (oldMeter.currentCounter == 0) {
+                customDialog()
+                binding.tvPrevCounter.text = oldMeter.currentCounter.toString()
+            } else {
+                binding.tvPrevCounter.text = oldMeter.currentCounter.toString()
+            }
         }
 
         db.settings().getLastSettings().asLiveData().observe(viewLifecycleOwner) {
             setting = it ?: DEFAULT_SETTINGS
+        }
+
+        binding.tvPrevCounter.setOnClickListener {
+            customDialog()
         }
 
         binding.btnCancel.setOnClickListener {
@@ -112,6 +128,32 @@ class ElectricMeterFragment : Fragment() {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, MenuFragment.newInstance()).commit()
         }
+    }
+
+    private fun customDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        val cl = layoutInflater.inflate(R.layout.previous_counter_dialog, null)
+        val counter = cl.findViewById<EditText>(R.id.edCounterValue)
+        val btnSave = cl.findViewById<Button>(R.id.btnSave)
+        val btnCancel = cl.findViewById<Button>(R.id.btnCancel)
+
+        builder.setView(cl)
+        val dialog = builder.create()
+        btnSave.setOnClickListener {
+            if (counter.text.isNotEmpty()) {
+                oldMeter.currentCounter = counter.text.toString().toInt()
+                binding.tvPrevCounter.text = counter.text.toString()
+                builder.setCancelable(false)
+                dialog.dismiss()
+            }
+        }
+
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+            return@setOnClickListener
+        }
+
+        dialog.show()
     }
 
     companion object {
