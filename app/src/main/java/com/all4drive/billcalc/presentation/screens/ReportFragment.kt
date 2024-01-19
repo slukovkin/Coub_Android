@@ -75,7 +75,7 @@ class ReportFragment : Fragment() {
         binding.tvMonth.adapter = adapter
         val calendar = Calendar.getInstance()
         val currentMonth = calendar.get(Calendar.MONTH) + 1
-        val convertMonth = if (currentMonth < 10) {
+        val convertMonthToString = if (currentMonth < 10) {
             "0$currentMonth"
         } else {
             currentMonth.toString()
@@ -90,7 +90,7 @@ class ReportFragment : Fragment() {
             ) {
                 val item = data[position]
                 binding.tvCurrentDate.text = item.month
-                val month = if (convertMonth == item.id) {
+                val month = if (convertMonthToString == item.id) {
                     item.id
                 } else {
                     item.id
