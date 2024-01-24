@@ -58,6 +58,13 @@
             android:text="@string/rate_settings"
             app:cornerRadius="5dp" />
 
+<!--        <Button-->
+<!--            android:id="@+id/btnPrevCountersValues"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/previous_meters_values"-->
+<!--            app:cornerRadius="5dp" />-->
+
 
     </LinearLayout>
 

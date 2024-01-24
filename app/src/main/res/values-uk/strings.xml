@@ -7,7 +7,7 @@
     <string name="gasmeter">"Газовий лічильник "</string>
     <string name="watermeter">Водомір</string>
     <string name="settings">Налаштування</string>
-    <string name="enter_current_tariff">"Введіть поточний тариф "</string>
+    <string name="enter_current_rate">"Введіть поточний тариф "</string>
     <string name="cancel">Відміна</string>
     <string name="the_current_readings_should_not_be_less_than_the_previous_ones">Поточні показання не повинні бути меншими за попередні!</string>
     <string name="electricity_supply">Електропостачання</string>
@@ -33,7 +33,7 @@
     <string name="date">Дата: %1$s</string>
     <string name="data_not_found">Дані не знайдені</string>
     <string name="enter_date">Виберіть дату</string>
-    <string name="enter_counter_value">Введіть показ лічильника</string>
+    <string name="enter_counter_value">Введіть значення лічильника</string>
     <string name="january">Січень</string>
     <string name="february">Лютий</string>
     <string name="march">Березень</string>
@@ -46,4 +46,7 @@
     <string name="october">Жовтень</string>
     <string name="november">Листопад</string>
     <string name="december">"Грудень "</string>
+    <string name="current_counter">Поточний лічильник</string>
+    <string name="enter_previous_counter_value">Введіть попереднє показання</string>
+    <string name="previous_meters_values">"Попередні значення лічильників "</string>
 </resources>

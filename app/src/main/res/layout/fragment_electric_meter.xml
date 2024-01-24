@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fon"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:paddingTop="24dp"
     tools:context=".presentation.screens.ElectricMeterFragment">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/fon"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:paddingTop="24dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -85,14 +81,4 @@
             android:text="@string/cancel"
             app:cornerRadius="5dp" />
 
-        <!--        <Button-->
-        <!--            android:id="@+id/btnCalendar"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:text="@string/enter_date"-->
-        <!--            app:cornerRadius="5dp" />-->
-
-    </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>

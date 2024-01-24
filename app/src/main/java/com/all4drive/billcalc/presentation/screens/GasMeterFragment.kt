@@ -91,7 +91,9 @@ class GasMeterFragment : Fragment() {
         }
 
         binding.tvPrevCounter.setOnClickListener {
-            customDialog()
+            if (oldMeter.prevCounter == 0) {
+                customDialog()
+            }
         }
 
         binding.btnCancel.setOnClickListener {
@@ -132,7 +134,7 @@ class GasMeterFragment : Fragment() {
 
     private fun customDialog() {
         val builder = AlertDialog.Builder(requireContext())
-        val cl = layoutInflater.inflate(R.layout.previous_counter_dialog, null)
+        val cl = layoutInflater.inflate(R.layout.fragment_previous_counter_dialog, null)
         val counter = cl.findViewById<EditText>(R.id.edCounterValue)
         val btnSave = cl.findViewById<Button>(R.id.btnSave)
         val btnCancel = cl.findViewById<Button>(R.id.btnCancel)

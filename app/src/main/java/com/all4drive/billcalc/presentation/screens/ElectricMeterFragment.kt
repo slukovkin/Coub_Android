@@ -32,7 +32,8 @@ class ElectricMeterFragment : Fragment() {
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var oldMeter: ElectricMeter
     private lateinit var setting: Settings
-    private lateinit var selectedDate: String
+    private var selectedDate = ""
+    private val calendar = Calendar.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -49,7 +50,7 @@ class ElectricMeterFragment : Fragment() {
         val db = Db.getDb(requireContext())
 
         binding.edCurrentCounter.setOnClickListener {
-            val calendar = Calendar.getInstance()
+
             binding.edCurrentCounter.isFocusableInTouchMode = true
 
             DatePickerDialog(
@@ -67,6 +68,7 @@ class ElectricMeterFragment : Fragment() {
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
             ).show()
+
         }
 
         db.electric().getLastMeter().asLiveData().observe(viewLifecycleOwner) {
@@ -90,7 +92,9 @@ class ElectricMeterFragment : Fragment() {
         }
 
         binding.tvPrevCounter.setOnClickListener {
-            customDialog()
+            if (oldMeter.prevCounter == 0) {
+                customDialog()
+            }
         }
 
         binding.btnCancel.setOnClickListener {
@@ -132,7 +136,7 @@ class ElectricMeterFragment : Fragment() {
 
     private fun customDialog() {
         val builder = AlertDialog.Builder(requireContext())
-        val cl = layoutInflater.inflate(R.layout.previous_counter_dialog, null)
+        val cl = layoutInflater.inflate(R.layout.fragment_previous_counter_dialog, null)
         val counter = cl.findViewById<EditText>(R.id.edCounterValue)
         val btnSave = cl.findViewById<Button>(R.id.btnSave)
         val btnCancel = cl.findViewById<Button>(R.id.btnCancel)

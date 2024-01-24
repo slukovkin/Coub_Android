@@ -7,7 +7,7 @@
     <string name="gasmeter">Газовый счетчик</string>
     <string name="watermeter">Водомер</string>
     <string name="settings">Настройки</string>
-    <string name="enter_current_tariff">Введите текущий тариф</string>
+    <string name="enter_current_rate">Введите текущий тариф</string>
     <string name="cancel">Отмена</string>
     <string name="the_current_readings_should_not_be_less_than_the_previous_ones">Текущие показания не должны быть меньше предыдущих!</string>
     <string name="electricity_supply">Электроснабжение</string>
@@ -46,4 +46,7 @@
     <string name="october">Октябрь</string>
     <string name="november">Ноябрь</string>
     <string name="december">Декабрь</string>
+    <string name="current_counter">Текущий счетчик</string>
+    <string name="enter_previous_counter_value">Введите предыдущее показание</string>
+    <string name="previous_meters_values">Предыдущие значения счетчиков</string>
 </resources>

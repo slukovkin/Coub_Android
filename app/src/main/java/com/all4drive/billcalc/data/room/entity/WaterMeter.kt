@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "water_meter")
 data class WaterMeter(
     @PrimaryKey(autoGenerate = true) val id: Int? = null,
-    @ColumnInfo(name = "prev_counter") val prevCounter: Int,
+    @ColumnInfo(name = "prev_counter") var prevCounter: Int,
     @ColumnInfo(name = "curr_counter") var currentCounter: Int,
     @ColumnInfo(name = "curr_flow") val currentFlow: Double,
     @ColumnInfo(name = "payment") val payment: Double,
