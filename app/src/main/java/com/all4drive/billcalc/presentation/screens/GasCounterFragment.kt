@@ -24,7 +24,7 @@ import com.all4drive.billcalc.presentation.MainViewModel
 import kotlinx.coroutines.launch
 import java.util.Calendar
 
-class GasMeterFragment : Fragment() {
+class GasCounterFragment : Fragment() {
 
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentGasMeterBinding
@@ -182,6 +182,6 @@ class GasMeterFragment : Fragment() {
         )
 
         @JvmStatic
-        fun newInstance() = GasMeterFragment()
+        fun newInstance() = GasCounterFragment()
     }
 }

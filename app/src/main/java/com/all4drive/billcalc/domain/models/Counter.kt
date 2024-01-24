@@ -1,6 +1,6 @@
 package com.all4drive.billcalc.domain.models
 
-data class Meter(
+data class Counter(
     val prevCounter: Int,
     val currentCounter: Int,
     val currentFlow: Double,

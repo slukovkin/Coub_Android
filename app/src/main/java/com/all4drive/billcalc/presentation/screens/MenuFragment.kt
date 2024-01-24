@@ -44,19 +44,19 @@ class MenuFragment : Fragment() {
         binding.btnElectricScreen.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .addToBackStack(null)
-                .replace(R.id.fragmentContainer, ElectricMeterFragment.newInstance()).commit()
+                .replace(R.id.fragmentContainer, ElectricCounterFragment.newInstance()).commit()
         }
 
         binding.btnWaterScreen.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .addToBackStack(null)
-                .replace(R.id.fragmentContainer, WaterMeterFragment.newInstance()).commit()
+                .replace(R.id.fragmentContainer, WaterCounterFragment.newInstance()).commit()
         }
 
         binding.btnGasScreen.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .addToBackStack(null)
-                .replace(R.id.fragmentContainer, GasMeterFragment.newInstance()).commit()
+                .replace(R.id.fragmentContainer, GasCounterFragment.newInstance()).commit()
         }
 
         binding.btnReportScreen.setOnClickListener {
